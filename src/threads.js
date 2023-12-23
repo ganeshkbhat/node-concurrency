@@ -30,6 +30,14 @@ class ConcurrentThreads {
     parentPort.postMessage(result);
   }
 
+  stop(id) {
+    if (!!id) {
+      this.processPool[id].kill();
+    } else {
+      this.workerPool.forEach(worker => worker.terminate());
+    }
+  }
+
 }
 
 if (!isMainThread) {
