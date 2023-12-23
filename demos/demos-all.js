@@ -1,5 +1,5 @@
 // main.js
-const ConcurrentRunner = require('../src/index');
+const Runner = require('../src/index');
 
 function exampleFunction(data) {
   // Your function logic goes here
@@ -8,14 +8,15 @@ function exampleFunction(data) {
   return d;
 }
 
-const concurrentRunner = new ConcurrentRunner();
+const ConcurrentThreads = new Runner.ConcurrentThreads();
+const ConcurrentProcesses = new Runner.ConcurrentProcesses();
 
 const numThreads = 3;
 const numProcesses = 2;
 const inputData = [1, 2, 3, 4, 5];
 
 // // Run function in multiple threads
-console.log("Final Results Threads: ", concurrentRunner.runInThreads(exampleFunction, inputData, numThreads));
+console.log("Final Results Threads: ", ConcurrentThreads.runInThreads(exampleFunction, inputData, numThreads));
 
 // Run function in multiple processes
-// concurrentRunner.runInProcesses(exampleFunction, inputData, numProcesses);
+// ConcurrentProcesses.runInProcesses(exampleFunction, inputData, numProcesses);
